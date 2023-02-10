@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Interact with ChatGPT {% endblock %}</h1>
+    <form method="post">
+        <label for="title">Query</label>
+        <br>
+        <textarea
+            type="text"
+            name="query"
+            placeholder="Query text"
+            value="{{ request.form['query']}}"
+            rows="1"
+            cols="80"
+        ></textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <div style="border: 1px solid green; width: 80%;">
+        <h2>Your question:</h2>
+        <p>{{ gpt_query }}</p>
+        <h2>Response by ChatGPT:</h2>
+        <div>
+            <p>{{ gpt_resp }}</p>
+        </div>
+    </div>
+{% endblock %}
